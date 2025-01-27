@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { PersonEntity } from './entities/person.entity';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         synchronize: true, // 개발 환경에서만 true, 프로덕션에서는 false 권장
       }),
     }),
+    TypeOrmModule.forFeature([PersonEntity]),
   ],
   controllers: [AppController],
   providers: [AppService],

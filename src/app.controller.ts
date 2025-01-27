@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { PersonEntity } from './entities/person.entity';
 
 @Controller()
 export class AppController {
@@ -8,5 +9,10 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Get('/person')
+  getPerson(): Promise<PersonEntity[]> {
+    return this.appService.getPerson();
   }
 }
